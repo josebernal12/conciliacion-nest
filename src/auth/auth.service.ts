@@ -76,7 +76,7 @@ export class AuthService {
   async updatePassword(id: string, updateAuthDto: UpdateAuthDto) {
     const user = await this.findOne(id)
     if (updateAuthDto.name || updateAuthDto.email) throw new BadRequestException('data not required');
-    if (!updateAuthDto.password ||!updateAuthDto.confirmPassword) throw new BadRequestException('password and confirm password are required')
+    if (!updateAuthDto.password || !updateAuthDto.confirmPassword) throw new BadRequestException('password and confirm password are required')
     if (updateAuthDto.password !== updateAuthDto.confirmPassword) throw new BadRequestException('password are not match')
     const hashedPassword = bcrypt.hashSync(updateAuthDto.password, 10);
     user.password = hashedPassword
@@ -110,6 +110,20 @@ export class AuthService {
     user.token = null
     await user.save()
     return "password updated successfully"
+  }
+
+  async isTokenValid(token: string) {
+    try {
+      if (!token) throw new BadRequestException('token is required')
+      const isValid = await this.jwtService.verify(token)
+      console.log(isValid)
+      if (!isValid) {
+        return false
+      }
+      return true
+    } catch (error) {
+      return false
+    }
   }
 
 }

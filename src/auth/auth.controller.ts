@@ -41,12 +41,14 @@ export class AuthController {
     return this.authService.update(id, updateAuthDto);
   }
 
-
   @Patch(':id')
   updatePassword(@Param('id', ParseMongoIdPipe) id: string, @Body() updateAuthDto: UpdateAuthDto) {
     return this.authService.updatePassword(id, updateAuthDto);
-
   }
 
+  @Get('/token/:token')
+  isTokenValid(@Param('token') token: string) { 
+    return this.authService.isTokenValid(token)
+  }
 
 }
