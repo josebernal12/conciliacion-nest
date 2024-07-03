@@ -35,13 +35,11 @@ export class Conciliation {
     ])
     secondTableData: number[][]
 
-    @Prop([
-        [{
-            type: Number,
-            trim: true
-        }]
-    ])
-    fiveTableData: number[][]
+    @Prop({
+        type: Number,
+        trim: true
+    })
+    fiveTableData: number
 
     @Prop([
         [{
@@ -127,7 +125,7 @@ export class Conciliation {
         ref: 'Medication',
         trim: true
     })
-    medicationId:Medication
+    medicationId: Medication
 }
 
 export const ConciliationSchema = SchemaFactory.createForClass(Conciliation)

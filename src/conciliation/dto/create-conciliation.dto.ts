@@ -19,8 +19,8 @@ export class CreateConciliationDto {
     secondTableData?: number[][];
 
     @IsOptional()
-    @IsArray()
-    fiveTableData?: number[][];
+    @IsNumber()
+    fiveTableData?: number;
 
     @IsOptional()
     @IsArray()
