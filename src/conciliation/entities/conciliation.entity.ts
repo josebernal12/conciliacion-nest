@@ -59,6 +59,12 @@ export class Conciliation {
         type: Number,
         trim: true
     })
+    totalAcondicionado: number
+
+    @Prop({
+        type: Number,
+        trim: true
+    })
     hermes: number
 
     @Prop({

@@ -29,6 +29,10 @@ export class CreateConciliationDto {
     @IsOptional()
     @IsNumber()
     tableAcondicionado?: number;
+   
+    @IsOptional()
+    @IsNumber()
+    totalAcondicionado?: number;
 
     @IsOptional()
     @IsNumber()
