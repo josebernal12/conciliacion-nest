@@ -14,7 +14,7 @@ export class ConciliationService {
   async create(createConciliationDto: CreateConciliationDto, userId: string) {
     createConciliationDto.userId = userId
     const conciliation = await this.conciliationModel.create(createConciliationDto)
-    if (!conciliation) throw new BadRequestException('error creating conciliation')
+    // if (!conciliation) throw new BadRequestException('error creating conciliation')
     return conciliation
   }
 
