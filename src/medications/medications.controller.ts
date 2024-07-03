@@ -40,4 +40,10 @@ export class MedicationsController {
   remove(@Param('id', ParseMongoIdPipe) id: string) {
     return this.medicationsService.remove(id);
   }
+  @UseGuards(AuthGuard)
+  @Get('medication')
+  searchMedication(@Req() request: Request, @Query('name') name: string, @Query('code') code: string) {
+    const userId: string = request['user']['id']
+    return this.medicationsService.searchMedication(userId, name, code)
+  }
 }

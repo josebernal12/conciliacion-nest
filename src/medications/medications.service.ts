@@ -53,4 +53,12 @@ export class MedicationsService {
     if (!response) throw new BadRequestException('error deleting medications')
     return 'medication deleted'
   }
+
+  async searchMedication(userId: string, name: string, code: string) {
+    if (name && code) {
+      const medication = await this.medicationModel.findOne({ name, code, userId })
+      if (!medication) throw new BadRequestException('error getting medication')
+      return medication
+    }
+  }
 }
